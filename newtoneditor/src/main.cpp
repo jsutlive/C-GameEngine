@@ -9,5 +9,7 @@ int main()
 
 	std::cout << a << ", " << b << std::endl;
 
+	newton::GetInfo();
+
 	return 0;
 }
