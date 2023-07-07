@@ -1,17 +1,21 @@
 import globals
 
-import subprocess
+import subprocess, sys
 import os
+
+ret = 0
 
 if globals.is_windows():
 	VS_BUILD_PATH = os.environ["VS_BUILD_PATH"][8:].replace("/", "\\")
 	VS_BUILD_PATH = "\C:\\" + VS_BUILD_PATH
 	print(VS_BUILD_PATH)
 
-	subprocess.call(["cmd.exe", "/c", VS_BUILD_PATH, "{}.sln".format(globals.ENGINE_NAME), "/property:Configuration={}".format(globals.CONFIG)])
+	ret = subprocess.call(["cmd.exe", "/c", VS_BUILD_PATH, "{}.sln".format(globals.ENGINE_NAME), "/property:Configuration={}".format(globals.CONFIG)])
 
 if globals.is_linux():
-	subprocess.call(["make", "config={}".format(CONFIG)])
+	ret = subprocess.call(["make", "config={}".format(CONFIG)])
 
 if globals.is_mac():
-	subprocess.call(["make", "config={}".format(CONFIG)])
+	ret = subprocess.call(["make", "config={}".format(CONFIG)])
+
+sys.exit(ret)
