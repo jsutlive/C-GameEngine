@@ -1,3 +1,9 @@
+ENGINE_NAME = "newton"
+PROJECT_NAME = "newtoneditor"
+
+CONFIG = "debug"
+TOOLS_DIR = "tools"
+
 V_MAJOR = 1
 V_MINOR = 0
 
