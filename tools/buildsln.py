@@ -9,3 +9,9 @@ if globals.is_windows():
 	print(VS_BUILD_PATH)
 
 	subprocess.call(["cmd.exe", "/c", VS_BUILD_PATH, "{}.sln".format(globals.ENGINE_NAME), "/property:Configuration={}".format(globals.CONFIG)])
+
+if globals.is_linux():
+	subprocess.call(["make", "config={}".format(CONFIG)])
+
+if globals.is_mac():
+	subprocess.call(["make", "config={}".format(CONFIG)])
