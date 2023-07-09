@@ -11,6 +11,10 @@ workspace "newton"
 tdir = "bin/%{cfg.buildcfg}/%{prj.name}"
 odir = "bin-obj/%{cfg.buildcfg}/%{prj.name}"
 
+-- External Dependencies
+externals = {}
+externals["SDL2"] = "external/SDL2"
+
 project "newton"
 	location "newton"
 	kind "StaticLib"
@@ -30,7 +34,8 @@ project "newton"
 
 	sysincludedirs
 	{
-		"%{prj.name}/include/newton"
+		"%{prj.name}/include/newton",
+		"%{externals.SDL2}/include/"
 
 	}
 
@@ -119,6 +124,16 @@ project "newtoneditor"
 		defines
 		{
 			"NEWTON_PLATFORM_WINDOWS"
+		}
+
+		libdirs
+		{
+			"%{externals.SDL2}/lib"
+		}
+
+		links
+		{
+			"SDL2"
 		}
 
 	filter{"system:linux", "configurations:*"}
