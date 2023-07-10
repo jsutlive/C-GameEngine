@@ -158,6 +158,11 @@ project "newtoneditor"
 			"NEWTON_PLATFORM_MAC"
 		}
 
+		links
+		{
+			"SDL2.framework"
+		}
+
 	filter "configurations:Debug"
 		defines
 		{
