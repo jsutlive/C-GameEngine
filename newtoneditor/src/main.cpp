@@ -3,11 +3,8 @@
 
 int main()
 {
-	std::cout << "Hello World" << std::endl;
-
-	newton::GetInfo();
-
-	newton::Initialize();
-	newton::Shutdown();
+	newton::Engine& engine = newton::Engine::Instance();
+	engine.Run();
+	std::cin.ignore();
 	return 0;
 }
